@@ -1,0 +1,8 @@
+ SELECT a.cotd_id, a.prod_id, b.nombre_prod, format(a.cotd_cantidad,0), b.prod_tipoisv, 
+                   format((a.cotd_cantidad * a.prod_precio),2) AS SubTotal, 
+                    format((b.prod_tipoisv/100)*(a.cotd_cantidad*a.prod_precio),2) as ISV, 
+                    format((a.cotd_cantidad*a.prod_precio) + ((b.prod_tipoisv/100)*(a.cotd_cantidad * a.prod_precio)),2) as Total, a.cot_id, 
+                    format(a.prod_precio,2), c.medida_nombre
+                    FROM t_cotizaciondet a  INNER JOIN t_productos b ON a.prod_id = b.prod_id 
+                                            INNER JOIN t_unidadmedida c ON b.medida_id = c.medida_id
+                    WHERE cot_id = 1  LIMIT 0,39

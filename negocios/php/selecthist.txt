@@ -1,0 +1,1 @@
+SELECT coalesce(SUM(pagin_valor),0) FROM t_pagosIngresos a WHERE ingre_id = '3'; 
